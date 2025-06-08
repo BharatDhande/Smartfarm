@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2F855A;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #2D3748;
+        }
+        
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #CBD5E0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="number"]:focus,
+        input[type="text"]:focus {
+            border-color: #2F855A;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #2F855A;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #276749;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2F855A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Recommendation System</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="nitrogen">Nitrogen:</label>
+            <input type="number" step="0.01" name="nitrogen" required>
+
+            <label for="phosphorus">Phosphorus:</label>
+            <input type="number" step="0.01" name="phosphorus" required>
+
+            <label for="potassium">Potassium:</label>
+            <input type="number" step="0.01" name="potassium" required>
+
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="0.01" name="temperature" required>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" step="0.01" name="humidity" required>
+
+            <label for="ph">pH Level:</label>
+            <input type="number" step="0.01" name="ph" required>
+
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" step="0.01" name="rainfall" required>
+
+            <label for="state">State:</label>
+            <input type="text" name="state" required>
+
+            <label for="city">City:</label>
+            <input type="text" name="city" required>
+
+            <input type="submit" value="Predict Crop">
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h2>Recommended Crop: {{ prediction }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

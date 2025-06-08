@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - AgroVision</title>
+</head>
+<body style="background-color: #f0f8ff; font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div style="background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 350px; text-align: center;">
+        <h2 style="color: #2e8b57; margin-bottom: 20px;">Login</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red; margin-bottom: 10px;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="POST" action="" style="display: flex; flex-direction: column; gap: 15px;">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required 
+                   style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            
+            <input type="password" name="password" placeholder="Password" required 
+                   style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            
+            <button type="submit" style="padding: 10px; border: none; background-color: #2e8b57; color: white; border-radius: 5px; cursor: pointer;">
+                Login
+            </button>
+        </form>
+    </div>
+</body>
+</html>

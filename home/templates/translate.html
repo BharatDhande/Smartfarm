@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translate Text</title>
+</head>
+<body>
+    <h1>Translation Tool</h1>
+    <form id="translateForm" method="POST">
+        {% csrf_token %}
+        <textarea name="text" placeholder="Enter text to translate" rows="4" cols="50"></textarea><br>
+        <label>Select Language:</label>
+        <select name="language">
+            <option value="hi">Hindi</option>
+            <option value="mr">Marathi</option>
+            <option value="ta">Tamil</option>
+            <option value="gu">Gujarati</option>
+        </select><br><br>
+        <button type="submit">Translate</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('translateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch("{% url 'translate_text' %}", {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.translated_text) {
+                    document.getElementById('result').innerText = 'Translated Text: ' + data.translated_text;
+                } else if (data.error) {
+                    document.getElementById('result').innerText = 'Error: ' + data.error;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

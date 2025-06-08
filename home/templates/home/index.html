@@ -1,0 +1,274 @@
+{% load static %}
+
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AgroVision</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <!-- Navbar -->
+  <nav class="bg-green-700 text-white p-4 flex justify-between items-center">
+   <h1 class="text-2xl font-bold">AgroVision</h1>
+   <div>
+    <a href="#services" class="px-4">Services</a>
+    <a href="#blogs" class="px-4">Our Blogs</a>
+    <a href="#contact" class="px-4">Contact</a>
+    <a href="#about" class="px-4">About Us</a>
+    <a class="bg-blue-500 text-white px-4 py-2 rounded m-1" href="{% url 'login' %}">Login</a>
+    <a class="bg-gray-500 text-white px-4 py-2 rounded m-1" href="{% url 'signup' %}">Signup</a>
+    {% if user.is_authenticated %}
+    <a class="bg-red-500 text-white px-4 py-2 rounded m-1" href="{% url 'logout' %}">Logout</a>
+    {% endif %}
+   </div>
+  </nav>
+
+  
+  <div class="bg-gradient-to-b from-green-200 to-green-500 min-h-screen text-gray-800">
+  <!-- Hero Section -->
+  <section class="h-[500px] flex items-center justify-center relative">
+   <img alt="Aerial view of a lush green agricultural field" class="absolute inset-0 w-full h-full object-cover z-0" height="500" src="{% static 'home/images/front1.jpg' %}" width="1500"/>
+   <div class="text-center text-white z-10">
+    <h1 class="text-5xl font-bold">Precision Agriculture Using Machine Learning</h1>
+    <p class="mt-4">Empowering Farmers with Technology</p>
+    <button class="mt-4 bg-green-500 px-6 py-3 rounded text-lg">Explore More</button>
+   </div>
+  </section> 
+
+  {% comment %} <div class="bg-gradient-to-b from-green-200 to-green-500 min-h-screen text-gray-800"> {% endcomment %}
+    {% comment %} <!-- Hero Section -->
+    <section class="relative flex items-center justify-center h-[80vh] bg-cover bg-center"
+      style="background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-photos%2Fsustainable-agriculture&psig=AOvVaw2H7D5xmkjZG0plpD6swk8q&ust=1742293553410000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjCj7bzkIwDFQAAAAAdAAAAABAE');">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="relative z-10 text-center text-white p-10">
+        <h1 class="text-5xl font-bold mb-4 animate-pulse">Welcome to AgriSmart</h1>
+        <p class="text-xl mb-8 animate-fade-in">Empowering Agriculture with AI & Machine Learning</p>
+      </div>
+    </section> {% endcomment %}
+
+    <!-- About Us Section -->
+    {% load static %}
+<section class="py-20 bg-white text-gray-700">
+    <div class="container mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-12 text-green-700 animate-fade-in">About AgroVision</h2>
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <!-- Text Section -->
+            <div class="space-y-6 animate-slide-in-left">
+                <p class="text-lg leading-relaxed mb-4">🌱 <strong>AgroVision</strong> is a cutting-edge AI-powered platform dedicated to enhancing agricultural productivity and sustainability. Our mission is to provide farmers and agricultural professionals with advanced tools for real-time monitoring, precision farming, disease detection, and crop recommendation.</p>
+                <p class="text-lg leading-relaxed mb-4">🤖 Founded by a passionate team of engineers and data scientists, AgroVision aims to revolutionize agriculture by integrating <strong>Artificial Intelligence</strong> and <strong>Machine Learning</strong> into everyday farming practices. Our platform offers a range of features designed to simplify decision-making, reduce risks, and improve efficiency.</p>
+                <p class="text-lg leading-relaxed">🌾 We believe that technology can empower the agricultural sector to face the challenges of the future and ensure food security for generations to come.</p>
+            </div>
+            
+            <!-- Image Section -->
+            <div class="rounded-lg overflow-hidden shadow-lg animate-slide-in-right">
+                <img src="{% static 'home/images/about.jpg' %}" alt="About AgroVision">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Animation Styles (Add this to your CSS file if not using Tailwind CSS plugins) -->
+<style>
+    @keyframes slide-in-left {
+        0% { transform: translateX(-100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slide-in-right {
+        0% { transform: translateX(100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    .animate-slide-in-left { animation: slide-in-left 1s ease-out; }
+    .animate-slide-in-right { animation: slide-in-right 1s ease-out; }
+    .animate-fade-in { animation: fade-in 1s ease-out; }
+</style>
+
+
+  <!-- Services Section -->
+  <section id="services" class="p-10 text-center bg-gray-100">
+   <h2 class="text-3xl font-bold mb-8">Our Services</h2>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white shadow-xl rounded-lg p-6">
+     <h3 class="text-xl font-bold">Crop Recommendation</h3>
+     <img src="{% static 'home/images/crop1.jpg' %}" alt="Crop Recommendation Image" class="w-full h-48 object-cover rounded mb-4">
+     <p>Find the best crops to cultivate based on various conditions.</p>
+     <a href="{% url 'crop_recommend' %}">
+      <button class="mt-4 bg-green-500 px-4 py-2 rounded">Explore</button>
+     </a>
+    </div>
+    <div class="bg-white shadow-xl rounded-lg p-6">
+     <h3 class="text-xl font-bold">Fertilizer Recommendation</h3>
+     <img src="{% static 'home/images/fertilizer.jpg' %}" alt="Fertilizer Recommendation Image" class="w-full h-48 object-cover rounded mb-4">
+     <p>Discover the most suitable fertilizers for your soil and crops.</p>
+     <a href="{% url 'fertilizer_recommendation' %}">
+      <button class="mt-4 bg-green-500 px-4 py-2 rounded">Explore</button>
+     </a>
+    </div>
+    <div class="bg-white shadow-xl rounded-lg p-6">
+     <h3 class="text-xl font-bold">Disease Detection</h3>
+     <img src="{% static 'home/images/disease.jpg' %}"alt="Disease Detection Image" class="w-full h-48 object-cover rounded mb-4">
+     <p>Identify crop diseases and get recommendations for their cure.</p>
+     <a href="{% url 'disease_detection' %}">
+      <button class="mt-4 bg-green-500 px-4 py-2 rounded">Explore</button>
+     </a>
+    </div>
+   </div>
+  </section>
+
+  <!-- Our Blogs Section -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Our Blogs - AgriSmart</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"> 
+      <style>
+          .bg-banner {
+              background-image: url('% static 'home/images/front1.jpg' %');
+              background-size: cover;
+              background-position: center;
+              position: relative;
+          }
+  
+          .banner-overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(34, 197, 94, 0.7);
+              backdrop-filter: blur(2px);
+          }
+  
+          .banner-text {
+              position: relative;
+              z-index: 10;
+          }
+  
+          .animate-fade-in {
+              animation: fadeIn 1s ease-in-out;
+          }
+  
+          @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+          }
+  
+          .bg-card {
+              background: url('https://source.unsplash.com/800x600/?plants,farming') no-repeat center center;
+              background-size: cover;
+          }
+      </style>
+  </head>
+  <body class="bg-gray-100">
+      <!-- Banner Section -->
+      <section class="py-20 bg-banner text-white text-center relative">
+          <div class="banner-overlay"></div>
+          <div class="container mx-auto banner-text">
+              <h1 class="text-5xl font-bold mb-4 animate-fade-in">Educational Hub for Young Minds</h1>
+              <p class="text-xl mb-6 animate-fade-in">Explore the fascinating world of agriculture through articles, videos, and fun activities!</p>
+             
+          </div>
+      </section> 
+  
+      <!-- Content Section -->
+      <section class="container mx-auto py-10 px-6 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4">Introduction to Agriculture</h2>
+              <p>Learn about the basics of farming, crops, and sustainable agriculture practices.</p>
+              <a href="https://en.wikipedia.org/wiki/Agriculture_in_India" class="text-blue-500 mt-4 inline-block">Read More</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4">Farming Techniques</h2>
+              <p>Explore different farming methods and how technology is making farming more efficient.</p>
+              <a href="https://youtu.be/RXNjGkJe7fY?si=v9oVZGy2WAgt6ADv" class="text-blue-500 mt-4 inline-block">Watch Video</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4">Interactive Games</h2>
+              <p>Play fun games that teach you about growing crops and managing farms!</p>
+              <a href="https://play.google.com/store/apps/details?id=com.agrium.farmers&pli=1" class="text-blue-500 mt-4 inline-block">Play Now</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4">Sustainable Agriculture</h2>
+              <p>Understand the importance of sustainable farming practices and their impact on the environment.</p>
+              <a href="https://sarep.ucdavis.edu/sustainable-ag" class="text-blue-500 mt-4 inline-block">Learn More</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4">Soil Health & Management</h2>
+              <p>Learn about the importance of soil health and how to maintain it for better crops.</p>
+              <a href="https://extension.psu.edu/managing-soil-health-concepts-and-practices" class="text-blue-500 mt-4 inline-block">Explore</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4">Future of Farming</h2>
+              <p>Discover how artificial intelligence and modern technology are shaping the future of agriculture.</p>
+              <a href="https://youtu.be/iojOWygE51I?si=BACuQHi4_NsMB8Sz" class="text-blue-500 mt-4 inline-block">Watch Video</a>
+          </div>
+      </section>
+  </body>
+  {% comment %} </html> {% endcomment %}
+  
+  <!--Contact-->
+  
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AgriSmart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head> {% endcomment %}
+{% comment %} <body class="bg-gray-100"> {% endcomment %}
+
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold mb-4 text-center">Contact Us</h1>
+        
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <div class="text-green-600 bg-green-100 p-2 rounded-lg">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'contact_us' %}" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="id_name" class="block text-lg font-semibold">Your Name</label>
+                {{ form.name }}
+            </div>
+            <div class="mb-4">
+                <label for="id_email" class="block text-lg font-semibold">Your Email</label>
+                {{ form.email }}
+            </div>
+            <div class="mb-4">
+                <label for="id_message" class="block text-lg font-semibold">Your Message</label>
+                {{ form.message }}
+            </div>
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md">Send Message</button>
+        </form>
+    </div>
+{% comment %} 
+</body>
+</html> {% endcomment %}
+
+
+  <!-- Footer -->
+  <footer class="bg-green-700 text-white p-4 text-center">
+   <p>© 2025 AgroVision. All rights reserved.</p>
+  </footer>
+
+ </body>
+</html>

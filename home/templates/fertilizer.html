@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Recommendation</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f9f4; margin: 0; padding: 0; color: #333;">
+    <div style="width: 80%; max-width: 900px; margin: 50px auto; padding: 30px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;">
+        <h1 style="color: #2e8b57; margin-bottom: 30px; font-size: 2.5em;">Fertilizer Recommendation System</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div style="margin: 15px 0;">
+                <label for="nitrogen" style="font-size: 1.2em;">Nitrogen (N):</label>
+                <input type="text" id="nitrogen" name="nitrogen" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label for="phosphorus" style="font-size: 1.2em;">Phosphorus (P):</label>
+                <input type="text" id="phosphorus" name="phosphorus" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label for="potassium" style="font-size: 1.2em;">Potassium (K):</label>
+                <input type="text" id="potassium" name="potassium" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+            </div>
+
+            <button type="submit" style="background-color: #2e8b57; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; margin-top: 20px;">Get Recommendation</button>
+        </form>
+
+        {% if recommendation %}
+            <div style="margin-top: 30px; padding: 20px; background-color: #e8f5e9; border: 2px solid #c8e6c9; border-radius: 8px; text-align: left;">
+                <h2 style="color: #388e3c;">Recommendation:</h2>
+                <p style="font-size: 1.2em;"><strong>{{ recommendation }}</strong></p>
+                
+                {% if description %}
+                    <h3 style="color: #388e3c; margin-top: 15px;">Suggestions for Improvement:</h3>
+                    <ul style="list-style-type: none; padding: 0;">
+                        {% for line in description.splitlines %}
+                            <li style="background-color: #f1f8e9; padding: 10px; margin: 5px 0; border-radius: 5px; font-size: 1.1em;">{{ line }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

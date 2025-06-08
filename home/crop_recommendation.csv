@@ -1,0 +1,51 @@
+State,City,Nitrogen,Phosphorus,Potassium,Temperature,Humidity,pH,Rainfall,Suitable Crop
+Maharashtra,Mumbai,18,8,59,20.7,65.4,7.8,141.7,Cotton
+Maharashtra,Pune,28,31,36,28.1,50.9,5.2,91.3,Groundnut
+Maharashtra,Nagpur,91,39,74,22.2,56.3,5.3,247.4,Fruits
+Maharashtra,Nashik,35,0.8,92,36.6,67.8,8.1,111.6,Maize
+Maharashtra,Aurangabad,18,49,59,26.3,70.8,8.1,181.3,Vegetables
+Maharashtra,Solapur,45,12,32,30.1,61.2,6.7,120.5,Sugarcane
+Maharashtra,Thane,77,24,45,25.8,72.0,6.0,98.2,Pulses
+Maharashtra,Kolhapur,60,14,75,21.9,68.4,7.2,210.3,Rice
+Maharashtra,Sangli,42,20,82,29.2,75.1,6.9,85.7,Bajra
+Maharashtra,Amravati,88,38,69,24.7,63.2,5.7,165.4,Soybean
+Punjab,Amritsar,60,14,75,20.9,71.2,7.2,190.3,Wheat
+Punjab,Ludhiana,42,20,82,28.2,75.1,6.9,85.7,Maize
+Punjab,Jalandhar,88,38,69,24.7,63.2,5.7,165.4,Sugarcane
+Punjab,Patiala,65,25,40,22.0,60.0,6.5,120.0,Rice
+Punjab,Bathinda,78,32,52,30.0,58.0,6.8,130.0,Cotton
+Punjab,Pathankot,55,18,62,26.0,64.0,7.1,150.0,Fruits
+Punjab,Faridkot,40,12,70,28.0,68.0,7.0,180.0,Bajra
+Punjab,Hoshiarpur,70,30,50,25.0,60.0,6.5,140.0,Vegetables
+Punjab,Moga,85,35,48,29.0,62.0,7.5,110.0,Pulses
+Punjab,Ferozepur,50,15,55,27.0,70.0,7.2,200.0,Groundnut
+Karnataka,Bangalore,45,12,32,30.1,61.2,6.7,120.5,Rice
+Karnataka,Mysore,77,24,45,25.8,72.0,6.0,98.2,Fruits
+Karnataka,Mangalore,60,14,75,21.9,68.4,7.2,210.3,Coffee
+Karnataka,Hubli,42,20,82,29.2,75.1,6.9,85.7,Bajra
+Karnataka,Belagavi,88,38,69,24.7,63.2,5.7,165.4,Cotton
+Karnataka,Dharwad,65,25,40,22.0,60.0,6.5,120.0,Vegetables
+Karnataka,Shimoga,78,32,52,30.0,58.0,6.8,130.0,Groundnut
+Karnataka,Bijapur,55,18,62,26.0,64.0,7.1,150.0,Pulses
+Karnataka,Tumkur,40,12,70,28.0,68.0,7.0,180.0,Wheat
+Karnataka,Gulbarga,70,30,50,25.0,60.0,6.5,140.0,Maize
+Tamil Nadu,Chennai,45,12,32,30.1,61.2,6.7,120.5,Rice
+Tamil Nadu,Madurai,77,24,45,25.8,72.0,6.0,98.2,Sugarcane
+Tamil Nadu,Coimbatore,60,14,75,21.9,68.4,7.2,210.3,Cotton
+Tamil Nadu,Trichy,42,20,82,29.2,75.1,6.9,85.7,Fruits
+Tamil Nadu,Salem,88,38,69,24.7,63.2,5.7,165.4,Vegetables
+Tamil Nadu,Thanjavur,65,25,40,22.0,60.0,6.5,120.0,Pulses
+Tamil Nadu,Vellore,78,32,52,30.0,58.0,6.8,130.0,Wheat
+Tamil Nadu,Erode,55,18,62,26.0,64.0,7.1,150.0,Bajra
+Tamil Nadu,Tiruppur,40,12,70,28.0,68.0,7.0,180.0,Groundnut
+Tamil Nadu,Dindigul,70,30,50,25.0,60.0,6.5,140.0,Maize
+West Bengal,Kolkata,45,12,32,30.1,61.2,6.7,120.5,Rice
+West Bengal,Howrah,77,24,45,25.8,72.0,6.0,98.2,Fruits
+West Bengal,Asansol,60,14,75,21.9,68.4,7.2,210.3,Vegetables
+West Bengal,Siliguri,42,20,82,29.2,75.1,6.9,85.7,Wheat
+West Bengal,Durgapur,88,38,69,24.7,63.2,5.7,165.4,Maize
+West Bengal,Kharagpur,65,25,40,22.0,60.0,6.5,120.0,Groundnut
+West Bengal,Maldah,78,32,52,30.0,58.0,6.8,130.0,Bajra
+West Bengal,Raiganj,55,18,62,26.0,64.0,7.1,150.0,Cotton
+West Bengal,Burdwan,40,12,70,28.0,68.0,7.0,180.0,Pulses
+West Bengal,Jalpaiguri,70,30,50,25.0,60.0,6.5,140.0,Fruits

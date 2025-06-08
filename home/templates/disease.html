@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Disease Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #2a9d8f;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+        }
+
+        form {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f7fcf8;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="file"]:focus {
+            border-color: #2a9d8f;
+        }
+
+        button[type="submit"] {
+            background-color: #2a9d8f;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #21867a;
+        }
+
+        .image-preview {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #f0f7f0;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #e8f5e9;
+            border: 2px solid #c8e6c9;
+            border-radius: 10px;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        .result:hover {
+            background-color: #d0edda;
+        }
+
+        .result p {
+            margin: 12px 0;
+            font-size: 1.15em;
+        }
+
+        .result p strong {
+            color: #2a9d8f;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Disease Detection</h1>
+
+        <form class="form-signin" method="post" enctype="multipart/form-data">
+            <div class="mx-auto" style="width: 200px;">
+                {% csrf_token %}
+                <input type="file" name="leaf_image" onchange="preview_image(event)" class="form-control-file">
+                <br><br>
+                <img id="output-image" class="rounded mx-auto d-block" style="max-width: 100%; height: auto;"/>
+                <button type="submit" class="btn btn-dark p-2 m-3 btn-lg">Predict</button>
+            </div>
+        </form>
+
+        {% if disease %}
+            <div class="image-preview">
+                <h2>Uploaded Image:</h2>
+                <img src="{{ uploaded_image_url }}" alt="Uploaded Image">
+            </div>
+
+            <div class="result">
+                <p><strong>Disease Detected:</strong> {{ disease }}</p>
+                <p><strong>Description:</strong> {{ description }}</p>
+                <p><strong>Cure:</strong> {{ cure }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('output-image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

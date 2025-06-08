@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart farm Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #chatbox { width: 300px; height: 400px; border: 1px solid #ddd; padding: 10px; overflow-y: scroll; }
+        #user-input { width: 250px; }
+        #send-btn { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <div id="chatbox"></div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button id="send-btn">Send</button>
+
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        sendBtn.addEventListener('click', () => {
+            const message = userInput.value;
+            if (message.trim() !== '') {
+                chatbox.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
+                fetch('/home/chatbot/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ message: message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    chatbox.innerHTML += `<div><strong>Bot:</strong> ${data.response}</div>`;
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                    userInput.value = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Farm</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    />
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <h1>Welcome, {{ user.username }}!</h1>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <h1>Welcome to Smart Farm!</h1>
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white p-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Smart Farm</h1>
+      <div>
+        <a href="{% url 'translate_text' %}">Translation Tool</a>
+        <a href="{% url 'chatbot_response' %}">Smart Farm Chatbot</a>
+        <a
+          href="{% url 'login' %}"
+          class="bg-blue-500 text-white px-4 py-2 rounded m-1"
+          >Login</a
+        >
+        <a
+          href="{% url 'signup' %}"
+          class="bg-gray-500 text-white px-4 py-2 rounded m-1"
+          >Signup</a
+        >
+        <a
+          href="{% url 'admin_login' %}"
+          class="bg-green-500 text-white px-4 py-2 rounded m-1"
+          >Admin Login</a
+        >
+        {% if user.is_authenticated %}
+        <a
+          href="{% url 'logout' %}"
+          class="bg-red-500 text-white px-4 py-2 rounded m-1"
+          >Logout</a
+        >
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mx-auto mt-8 text-center">
+      {% if user.is_authenticated %}
+      <h1 class="text-2xl font-bold">Welcome, {{ user.username }}!</h1>
+      {% else %}
+      <h1 class="text-2xl font-bold">Welcome to Smart Farm!</h1>
+      {% endif %}
+    </div>
+
+    <!-- Hero Section -->
+    <div
+      class="h-[500px] bg-cover bg-center flex items-center justify-center"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1506277886153-b1c0e7b7a3df?fit=crop&w=1500&q=80');
+      "
+    >
+      <div class="text-center text-white">
+        <h1 class="text-4xl font-bold">
+          Precision Agriculture Using Machine Learning
+        </h1>
+        <p>Get information details about your Farming Strategy</p>
+        <button class="mt-4 bg-green-500 px-4 py-2 rounded">
+          View Details
+        </button>
+      </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section class="p-10 text-center">
+      <h2 class="text-3xl font-bold mb-4">About Us</h2>
+      <div class="flex justify-center">
+        <div class="w-1/2">
+          <p>
+            Improving Agriculture, Improving Lives, Cultivating Crops To Make
+            Farmers Increase Profit. We use state-of-the-art machine learning
+            and deep learning technologies to help you guide through the entire
+            farming process.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="p-10 text-center">
+      <h2 class="text-3xl font-bold mb-8">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-xl p-4">
+          <h3 class="font-bold">Crop</h3>
+          <p>
+            Recommendation about the type of crops to be cultivated which is
+            best suited for the respective conditions.
+          </p>
+          <a href="{% url 'crop_recommendation' %}">
+            <button class="mt-4 bg-green-500 px-4 py-2 rounded">
+              Crop Recommendation
+            </button>
+          </a>
+        </div>
+        <div class="bg-white shadow-lg rounded-xl p-4">
+          <h3 class="font-bold">Fertilizer</h3>
+          <p>
+            Recommendation about the type of fertilizer best suited for the
+            particular soil and the recommended crop.
+          </p>
+          <a href="{% url 'fertilizer_recommendation' %}">
+            <button class="mt-4 bg-green-500 px-4 py-2 rounded">
+              Fertilizer Recommendation
+            </button>
+          </a>
+        </div>
+        <div class="bg-white shadow-lg rounded-xl p-4">
+          <h3 class="font-bold">Crop Disease</h3>
+          <p>
+            Predicting the name and causes of crop diseases and suggestions to
+            cure it.
+          </p>
+          <a href="{% url 'disease_detection' %}">
+            <button class="mt-4 bg-green-500 px-4 py-2 rounded">
+              Disease Detection
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Translate Integration -->
+<div id="google_translate_element"></div>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- Chatbot Button -->
+<button id="chatbotButton" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;">
+    Chatbot
+</button>
+
+<!-- Chatbot Modal -->
+<div id="chatbotModal" style="
+    display: none; 
+    position: fixed; 
+    bottom: 80px; 
+    right: 20px; 
+    background-color: white; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    width: 300px; 
+    height: 400px;">
+    <div style="padding: 10px; background-color: #4CAF50; color: white; text-align: center; border-radius: 10px 10px 0 0;">
+        Smart Farm Chatbot
+    </div>
+    <div id="chatbotContent" style="padding: 10px; height: 340px; overflow-y: auto;">
+        <p>Hello! How can I assist you today? 😊</p>
+    </div>
+</div>
+
+<!-- Chatbot Script -->
+<script>
+  const chatbotButton = document.getElementById('chatbotButton');
+  const chatbotModal = document.getElementById('chatbotModal');
+
+  chatbotButton.onclick = function() {
+      chatbotModal.style.display = chatbotModal.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+      © 2025 Smart Farm. All rights reserved. Go Green.
+    </footer>
+  </body>
+</html>
