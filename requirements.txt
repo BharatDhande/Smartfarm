@@ -35,3 +35,5 @@ threadpoolctl==3.6.0
 tifffile==2025.3.13
 tzdata==2025.2
 wheel==0.45.1
+gunicorn
+
